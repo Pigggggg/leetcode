@@ -1,9 +1,16 @@
 #039_Combination_Sum
 #040
 #047_Permutations_II => 再改改
-#077
-#078
+#077_Combinations => 算法没问题，写法再改改
+#078_Subsets => 写法再改改
 #090
 #216
 #943
 #996
+
+TODO:
+#047
+#077
+#943
+#996
+
