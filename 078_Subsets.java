@@ -1,36 +1,19 @@
 class Solution {
-    private List<List<Integer>> out = null;
-	private Set<List<Integer>> set = null;
+    List<List<Integer>> out = new LinkedList<>();
     public List<List<Integer>> subsets(int[] nums) {
-		out = new LinkedList<>();
-		set = new HashSet<>();
-		
-		for(int i = 0; i < nums.length; i++) {
-			LinkedList<Integer> tempArr = new LinkedList<>();
-			tempArr.add(nums[i]);
-			Set<Integer> tempSet = new HashSet<>();
-			tempSet.add(i);
-			dfs(nums, tempArr, tempSet, i);
-		}
-		
-		out.add(new LinkedList<Integer>());
-		return out;
+        dfs(nums, nums.length, new LinkedList<Integer>(), 0);
+        return out;
     }
     
-    private void dfs(int[] nums, List<Integer> Arr, Set<Integer> curSet, int index) {
-		if(!set.contains(Arr)) {
-			set.add(Arr);
-			out.add(Arr);
-		}
-		
-		for(int i = index; i < nums.length; i++) {
-			if(!curSet.contains(i)) {
-				LinkedList<Integer> curArr = new LinkedList<>(Arr);
-				curArr.add(nums[i]);
-				Set<Integer> tempSet = new HashSet<>(curSet);
-				tempSet.add(i);
-				dfs(nums, curArr, tempSet, i + 1);
-			}
-		}
-	}
+    private void dfs(int[] nums, int level, List<Integer> arr, int index){
+        if(level >= 0){
+            out.add(new LinkedList<Integer>(arr));
+        }
+        
+        for(int i = index; i < nums.length; i++){
+            arr.add(nums[i]);
+            dfs(nums, level - 1, arr, i + 1);
+            arr.remove(arr.size() - 1);
+        }
+    }
 }

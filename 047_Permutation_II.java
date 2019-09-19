@@ -1,35 +1,27 @@
 class Solution {
-    private static List<List<Integer>> out = null;
-	private static Set<List<Integer>> set = null;
+    List<List<Integer>> out = null;
+    Set<List<Integer>> metaSet = null;
     public List<List<Integer>> permuteUnique(int[] nums) {
         out = new LinkedList<>();
-		set = new HashSet<>();
-        for(int i = 0; i < nums.length; i++) {
-			List<Integer> temp = new LinkedList<>();
-			Set<Integer> tempSet= new HashSet<>();
-			temp.add(nums[i]);
-			tempSet.add(i);
-			dfs(nums, temp, tempSet);
-		}
-		
-		return out;
+        metaSet = new HashSet<>();
+        dfs(nums, new LinkedList<Integer>(), new HashSet<Integer>());
+        return out;
     }
     
-    	private static void dfs(int[] nums, List<Integer> arr, Set<Integer> currSet) {
-		if(nums.length == arr.size() && !set.contains(arr)) {
-			set.add(arr);
-			out.add(arr);
-			return;
-		}
-		
-		for (int i = 0; i < nums.length; i++) {
-			if(!currSet.contains(i)) {
-				LinkedList<Integer> curArr = new LinkedList<>(arr);
-				curArr.add(nums[i]);
-				Set<Integer> curSet = new HashSet<>(currSet);
-				curSet.add(i);
-				dfs(nums, curArr, curSet);
-			}
-		}
-	}
+    private void dfs(int[] nums, List<Integer> arr, Set<Integer> set){
+        if(arr.size() == nums.length && !metaSet.contains(arr)){
+            metaSet.add(new LinkedList<>(arr));
+            out.add(new LinkedList<>(arr));
+        }
+        
+        for(int i = 0; i < nums.length; i++){
+            if(!set.contains(i)){
+                set.add(i);
+                arr.add(nums[i]);
+                dfs(nums, arr, set);
+                set.remove(i);
+                arr.remove(arr.size() - 1);
+            }
+        }
+    }
 }
