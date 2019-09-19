@@ -25,3 +25,28 @@ class Solution {
         }
     }
 }
+
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
+        Set<Integer> visited = new HashSet<>();
+        dfs(res, new ArrayList<>(), visited, nums, 0);
+        return res;
+    }
+    private void dfs(List<List<Integer>> res, List<Integer> curr, Set<Integer> visited, int[] nums, int idx) {
+        if(idx == nums.length) {
+            res.add(new ArrayList<>(curr));
+        }
+        for(int i = 0;i<nums.length;i++) {
+            if(i>0 && visited.contains(i-1) && nums[i-1] == nums[i]) continue;
+            if(!visited.contains(i)) {
+                curr.add(nums[i]);
+                visited.add(i);
+                dfs(res, curr, visited, nums,idx + 1);
+                curr.remove(curr.size() - 1);
+                visited.remove(i);
+            }
+        }
+    }
+}
