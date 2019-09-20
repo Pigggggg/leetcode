@@ -1,13 +1,3 @@
-#039_Combination_Sum
-#040
-#047_Permutations_II => 再改改
-#077_Combinations => 算法没问题，写法再改改
-#078_Subsets => 写法再改改
-#090_Subsets_II => 改进写法，78和90其实可以统一成一个算法
-#216_Combinations_III => 算法没问题，改进写法
-#088_Merge_Sorted_array => 100%
-#083_Remove_Duplicates_from_Sorted_List => 100%
-#070_Climbing_Stairs => 100% 改进用dp的写法，bottom to top instead of top to bottom
 #082
 #208
 #648	
