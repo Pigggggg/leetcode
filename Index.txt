@@ -20,7 +20,7 @@ TODO:
 #37
 
 AMZ
-#973
+#973_K_Closest_Points_to_Origin => 78.35%
 #200
 #5
 #146
