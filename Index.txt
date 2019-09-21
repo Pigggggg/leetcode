@@ -16,12 +16,12 @@ TODO:
 尽可能优化以上题目，争取击败90%以上
 #943
 #996
-#22
-#37
+#022 => 22 Generate Parentheses => 93.10%
+#037
 
 AMZ
 #973_K_Closest_Points_to_Origin => 78.35%
-#200
+#200_Number_of_Islands => 100%
 #5
 #146
 #957
